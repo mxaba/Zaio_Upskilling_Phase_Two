@@ -1,4 +1,3 @@
-##Real Estate App
 **Features**
 
 Following are the main features of this app:
