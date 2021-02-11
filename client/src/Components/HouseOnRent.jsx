@@ -14,7 +14,7 @@ const HouseOnSale = () => {
     dispatch(rentHouseAction());
   }, []);
   return (
-    <div className="row Houses__container">
+    <div className="Houses__container">
       {loading ? (
         <img src={screenLoader} alt="Fetching-DATA" className="loadingScreen" />
       ) : error ? (
@@ -22,10 +22,10 @@ const HouseOnSale = () => {
       ) : (
         <div className="Container">
           <h3>Houses To Rent</h3>
-          <div className="col-sm-12 collistedHouses">
+          <div className="listedHouses">
             {rentHouses.map((house) => {
               return (
-                <div className="House__details" key={house._id}>
+                <div className="col-sm-3 House__details" key={house._id}>
                   <div className="img-conatiner">
                     <Link to={`/house/${house.house_location.province}/${house._id}`} >
                       <img src={house.house_properties.houseImage} alt="House" width="300" height="200" />
@@ -33,7 +33,7 @@ const HouseOnSale = () => {
                   </div>
                   <div className="House__priceAndDetails">
                     <h4 className="House__price">{`R${house.house_properties.housePrice}`}</h4>
-                    <h4 className="House__snipDescription">{`${house.house_properties.bedroomNumber} Bedroom house for sale in ${house.house_location.province}`}</h4>
+                    <h4 className="House__snipDescription">{`${house.house_properties.bedroomNumber} Bedroom house for Rent in ${house.house_location.province}`}</h4>
                   </div>
                 </div>
               );

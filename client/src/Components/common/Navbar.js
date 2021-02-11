@@ -12,7 +12,7 @@ function Navbar() {
                         <a className="navbar-brand" href="/">
                             <img className="img-fluid" src={logo} alt="logo" />
                         </a>
-                        <div className="navbar-collapse collapse justify-content-center">
+                        <div className="col-sm-12 navbar-collapse collapse justify-content-center">
                             <ul className="nav navbar-nav">
                             <li className="nav-item">
                                     <a className="nav-link" href="/login" id="navbarDropdown" role="button" data-toggle="dropdown">Login</a>
@@ -41,10 +41,10 @@ function Navbar() {
                                 <li className="nav-item">
                                     <a className="nav-link" href="/properties/sale" id="navbarDropdown" role="button" data-toggle="dropdown">For Sale</a>
                                 </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="/properties/sell" id="navbarDropdown" role="button" data-toggle="dropdown" style={{color: 'green'}}><i className="fa fa-plus-circle"></i>Add listing </a>
+                                </li>
                             </ul>
-                        </div>
-                        <div className="add-listing d-none d-sm-block">
-                            <a className="btn btn-primary btn-md" href="/properties/sell" id="navbarDropdown"> <i className="fa fa-plus-circle"></i>Add listing </a>
                         </div>
                     </div>
                 </nav>

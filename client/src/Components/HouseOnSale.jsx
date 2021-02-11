@@ -22,10 +22,10 @@ const HouseOnSale = () => {
       ) : (
         <div className="Container">
           <h3>Houses For Sale</h3>
-          <div className="listedHouses">
+          <div className=" listedHouses">
             {houseOnSale.map((house) => {
               return (
-                <div className="House__details" key={house._id}>
+                <div className="col-sm-3 House__details" key={house._id}>
                   <div className="img-conatiner">
                     <Link
                       to={`/house/${house.house_location.province}/${house._id}`}

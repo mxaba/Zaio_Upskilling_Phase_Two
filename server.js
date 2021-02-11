@@ -7,7 +7,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 
 
-const mongoURI = process.env.Mgongo_URI;
+const mongoURI = process.env.mongoURI;
 mongoose.connect(
   mongoURI,
   { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true },
@@ -20,9 +20,9 @@ mongoose.connect(
 );
 
 cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET,
+  cloud_name: process.env.Cloud_Name,
+  api_key: process.env.API_Key,
+  api_secret: process.env.API_Secret,
 });
 
 //MiddleWare

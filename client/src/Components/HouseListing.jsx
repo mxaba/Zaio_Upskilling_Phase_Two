@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../StyleSheet/HouseListing.css";
 import axios from "axios";
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 
 const HouseListing = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-  const [idNumber, setIDnumber] = useState(0);
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [email, setEmail] = useState("");
   const [province, setProvince] = useState("");
@@ -20,6 +20,7 @@ const HouseListing = () => {
   const [bathroomNumber, setBathRoomNumber] = useState(0);
   const [petFriendly, setPetFriendly] = useState(false);
   const [houseImage, setHouseImage] = useState("");
+  const history = useHistory();
 
   const listProperty = (e) => {
     e.preventDefault();
@@ -27,7 +28,6 @@ const HouseListing = () => {
     const data = new FormData();
     data.append("name", name);
     data.append("surname", surname);
-    data.append("idNumber", parseInt(idNumber));
     data.append("phoneNumber", parseInt(phoneNumber));
     data.append("email", email);
     data.append("province", province);
@@ -45,12 +45,11 @@ const HouseListing = () => {
       .post(dev_url, data)
       .then((response) => {
         console.log(response);
-      })
+      }, history.push("/"))
 
       .catch((error) => {
         console.log(error);
       });
-      return <Redirect to='/' />
   };
 
   return (
@@ -59,57 +58,36 @@ const HouseListing = () => {
         <h1>List your property</h1>
         <label>Name</label>
         <input
-          type="text"
-          placeholder="Enter you legal name"
-          onChange={(e) => setName(e.target.value)}
+          type="text" placeholder="Enter you legal name" onChange={(e) => setName(e.target.value)}
         />
         <label>Surname</label>
         <input
-          type="text"
-          placeholder="Enter your legal surname in use"
-          onChange={(e) => setSurname(e.target.value)}
-        />
-        <label>Identity Number</label>
-        <input
-          type="text"
-          placeholder="Enter you ID Number"
-          onChange={(e) => setIDnumber(e.target.value)}
+          type="text" placeholder="Enter your legal surname in use" onChange={(e) => setSurname(e.target.value)}
         />
         <label>Phone Number</label>
         <input
-          type="text"
-          placeholder="Enter in your phone number"
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          type="text" placeholder="Enter in your phone number" onChange={(e) => setPhoneNumber(e.target.value)}
         />
         <label>Email Address</label>
         <input
-          type="email"
-          placeholder="Enter in your email address"
-          onChange={(e) => setEmail(e.target.value)}
+          type="email" placeholder="Enter in your email address" onChange={(e) => setEmail(e.target.value)}
         />
         <label>Province</label>
         <input
-          type="text"
-          placeholder="Enter the province where the listed house is at"
-          onChange={(e) => setProvince(e.target.value)}
+          type="text" placeholder="Enter a Province name" onChange={(e) => setProvince(e.target.value)}
         />
         <label>Street</label>
         <input
-          type="text"
-          placeholder="Enter the street number of listed house"
-          onChange={(e) => setStreet(e.target.value)}
+          type="text" placeholder="Enter the street number of listed house" onChange={(e) => setStreet(e.target.value)}
         />
         <label>Sale Or Rent</label>
         <select onChange={(e) => setSaleOrRent(e.target.value)}>
-          <option>...</option>
           <option>SALE</option>
           <option>RENT</option>
         </select>
         <label>House Price</label>
         <input
-          type="number"
-          placeholder="Please enter in the land size"
-          onChange={(e) => setHousePrice(e.target.value)}
+          type="number" placeholder="Please enter in the land size" onChange={(e) => setHousePrice(e.target.value)}
         />
         <label>Number of Bed Rooms</label>
         <select onChange={(e) => setBedRoomNumber(e.target.value)}>
@@ -161,7 +139,6 @@ const HouseListing = () => {
         </select>
         <label>Pet Friendly</label>
         <select onChange={(e) => setPetFriendly(e.target.value)}>
-          <option>...</option>
           <option value={true}>YES</option>
           <option value={false}>NO</option>
         </select>
@@ -169,9 +146,7 @@ const HouseListing = () => {
         <input type="file" onChange={(e) => setHouseImage(e.target.files[0])} />
         <label>Description</label>
         <input
-          type="text"
-          placeholder="Description of the house..."
-          onChange={(e) => setDestription(e.target.value)}
+          type="text"  placeholder="Description of the house..." onChange={(e) => setDestription(e.target.value)}
         />
 
         <button type="submit" onClick={listProperty}>

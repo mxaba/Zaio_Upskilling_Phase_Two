@@ -4,7 +4,6 @@ const HouseSchema = mongoose.Schema({
   owner: {
     name: { type: String, required: true },
     surname: { type: String, required: true },
-    idNumber: { type: Number, required: true },
     phoneNumber: { type: Number, required: true },
     email: { type: String, required: true },
   },

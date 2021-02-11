@@ -11,7 +11,6 @@ router.post("/api/houseListing", async (request, response) => {
     const {
       name,
       surname,
-      idNumber,
       phoneNumber,
       email,
       province,
@@ -38,7 +37,6 @@ router.post("/api/houseListing", async (request, response) => {
           owner: {
             name,
             surname,
-            idNumber,
             phoneNumber,
             email,
           },

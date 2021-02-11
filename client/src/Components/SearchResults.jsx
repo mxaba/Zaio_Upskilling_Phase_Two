@@ -38,7 +38,7 @@ const HouseOnSale = () => {
           <div className="listedHouses">
             {searchBoxResults.map((house) => {
               return (
-                <div className="House__details" key={house._id}>
+                <div className="col-sm-4 House__details" key={house._id}>
                   <div className="img-conatiner">
                     <Link
                       to={`/house/${house.house_location.province}/${house._id}`}
@@ -51,7 +51,7 @@ const HouseOnSale = () => {
                   </div>
                   <div className="House__priceAndDetails">
                     <h4 className="House__price">{`R${house.house_properties.housePrice}`}</h4>
-                    <h4 className="House__snipDescription">{`${house.house_properties.bedroomNumber} Bedroom house for sale in ${house.house_location.province}`}</h4>
+                    <h4 className="House__snipDescription">{`${house.house_properties.bedroomNumber} Bedroom house at ${house.house_location.province}`}</h4>
                   </div>
                 </div>
               );

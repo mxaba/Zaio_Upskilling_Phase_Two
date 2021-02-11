@@ -20,17 +20,14 @@ const DesktopSearchBar = () => {
         <h4>Find your dream home</h4>
       </div>
       <div className="Search__field">
-        <input
-          type="text"
-          placeholder="Search for your dream home"
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+        <input type="text"  placeholder="Search for your dream home" onChange={(e) => setSearchQuery(e.target.value)} />
         <SearchIcon onClick={searchBoxResults} />
       </div>
       <div className="filters">
         Filter By Province:
         <select onChange={(e) => redirectToFilterSearchResult(e.target.value)}>
           <option>...</option>
+          <option>Gauteng</option>
           <option>Limpopo</option>
           <option>Western Cape</option>
           <option>Eastern Cape</option>
