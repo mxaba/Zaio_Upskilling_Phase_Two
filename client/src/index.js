@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import store from "./store/store";
 
@@ -14,9 +15,12 @@ import "./Components/common/css/owl-carousel/owl.carousel.min.css";
 import "./Components/common/css/magnific-popup/magnific-popup.css";
 import "./Components/common/css/style.css";
 
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById("root")
 );
+
+serviceWorker.unregister();

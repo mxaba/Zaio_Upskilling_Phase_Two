@@ -5,19 +5,24 @@ const path = require("path");
 const cloudinary = require("cloudinary").v2;
 require("dotenv").config();
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const passport = require("passport");
 
 
-const mongoURI = process.env.mongoURI;
-mongoose.connect(
-  mongoURI,
-  { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true },
-  (error) => {
-    if (error) {
-      return console.log(error);
-    }
-    return console.log("MongoDB Atlas Connected successful");
-  }
-);
+// DB Config
+const db = require("./config/keys").mongoURI;
+app.use(bodyParser.json());
+app.use(passport.initialize());
+require("./config/passport")(passport);
+// Connect to MongoDB
+mongoose
+  .connect(
+    db,
+    { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
+
 
 cloudinary.config({
   cloud_name: process.env.Cloud_Name,
@@ -25,8 +30,16 @@ cloudinary.config({
   api_secret: process.env.API_Secret,
 });
 
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+
 //MiddleWare
 app.use(cors());
+
+app.use(express.json());
 
 
 //API ENDPOINTS CONSTANTS
