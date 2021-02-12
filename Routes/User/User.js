@@ -1,93 +1,56 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const passport = require("passport");
-const keys = require("../../config/keys");
-const User = require('../../models/Users');
-const LocalStrategy = require('passport-local').Strategy;
+const userService = require('./user.service');
 
-router.get('/', (req, res) => {
-    User.find()
-        .then(users => res.json(users));
-});
-
-router.post('/register', (req, res) => {
-    User.findOne({ email: req.body.email }).then(user => {
-        if (user) {
-            return res.status(400).json({ email: "email already exists..." });
-        }
-        const newUser = new User({
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password
-        });
-        // Hash password before saving in database
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newUser.password, salt, (err, hash) => {
-                if (err) throw err;
-                newUser.password = hash;
-                newUser
-                    .save()
-                    .then(user => res.json(user))
-                    .catch(err => console.log(err));
-            });
-        });
-    });
-});
-
-
-passport.use(new LocalStrategy({
-        email: 'email',
-        password: 'password'
-    },
-    function(email,password,done){
-        User.findOne({ email: email }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect email.' });
-            }
-            bcrypt.compare(password, user.password).then(isMatch => {
-                if (isMatch) {
-                    return done(null, user);
-                } else {
-                    return done(null, false, {message: 'Incorrect password.'});
-                }
-            });
-
-
-        });
-
-    }
-));
-
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-        done(err, user);
-    });
-});
-
-
-router.post('/login', function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-
-        if (err) { return next(err); }
-        if (!user) { return res.status(400).json({message:info.message}); }
-        req.logIn(user, function(err) {
-            if (err) { return next(err); }
-            return res.json({ id:req.user.id, email:req.user.email });
-        });
-    })(req, res, next);
-});
-
-
-router.get('/logout',(req,res)=>{
-    req.logout();
-    res.sendStatus(200);
-});
+// routes
+router.post('/authenticate', authenticate);
+router.post('/register', register);
+router.get('/', getAll);
+router.get('/current', getCurrent);
+router.get('/:id', getById);
+router.put('/:id', update);
+router.delete('/:id', _delete);
 
 module.exports = router;
+
+function authenticate(req, res, next) {
+    userService.authenticate(req.body)
+        .then(user => user ? res.json(user) : res.status(400).json({ message: 'emailaddress or password is incorrect' }))
+        .catch(err => next(err));
+}
+
+function register(req, res, next) {
+    userService.create(req.body)
+        .then(() => res.json({}))
+        .catch(err => next(err));
+}
+
+function getAll(req, res, next) {
+    userService.getAll()
+        .then(users => res.json(users))
+        .catch(err => next(err));
+}
+
+function getCurrent(req, res, next) {
+    userService.getById(req.user.sub)
+        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function getById(req, res, next) {
+    userService.getById(req.params.id)
+        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function update(req, res, next) {
+    userService.update(req.params.id, req.body)
+        .then(() => res.json({}))
+        .catch(err => next(err));
+}
+
+function _delete(req, res, next) {
+    userService.delete(req.params.id)
+        .then(() => res.json({}))
+        .catch(err => next(err));
+}

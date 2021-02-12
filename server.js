@@ -28,6 +28,7 @@ cloudinary.config({
 //MiddleWare
 app.use(cors());
 
+
 //API ENDPOINTS CONSTANTS
 const HouseListingRoute = require("./Routes/HouseUpload/HouseSaleOrRent");
 const ListHouseFecthRoute = require("./Routes/ListedHouseFetch/HouseFetch");
@@ -39,6 +40,7 @@ app.use(HouseListingRoute);
 app.use(ListHouseFecthRoute);
 app.use(ContactFormRoute);
 app.use(UsersRoute);
+
 
 //Setting up for production
 if (process.env.NODE_ENV === "production") {
