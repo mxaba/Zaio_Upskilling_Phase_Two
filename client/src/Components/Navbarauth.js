@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "./../../store/Actions/authActions";
-import logo from './images/logo.svg';
+import { logoutUser } from "../store/Actions/authActions";
+import logo from './common/images/logo.svg';
 
+class Navbarauth extends Component {
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
 
-class Navbar extends Component {
   render() {
+    const { user } = this.props.auth;
 
     return (
         <header className="header">
@@ -19,10 +24,10 @@ class Navbar extends Component {
                         <div className="col-sm-12 navbar-collapse collapse justify-content-center">
                             <ul className="nav navbar-nav">
                             <li className="nav-item">
-                                    <a className="nav-link" href="/login" id="navbarDropdown" role="button" data-toggle="dropdown">Login</a>
+                                    <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Hey there, {user.name}</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/register" id="navbarDropdown" role="button" data-toggle="dropdown" style={{color:'red'}}>Sign-Up</a>
+                                    <a className="nav-link" onClick={this.onLogoutClick} id="navbarDropdown" role="button" data-toggle="dropdown" style={{color:'red'}}>Logout</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Developments</a>
@@ -57,7 +62,7 @@ class Navbar extends Component {
   }
 }
 
-Navbar.propTypes = {
+Navbarauth.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -69,4 +74,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Navbar);
+)(Navbarauth);
