@@ -41,7 +41,7 @@ TODO
 
 
 LINKS
-- link to Web-App: https://property24.herokuapp.com/
+- Web-App: https://property24.herokuapp.com/
 - Github: https://github.com/mxaba/Zaio_Upskilling_Phase_Two
 - author: https://mxaba.github.io
 
