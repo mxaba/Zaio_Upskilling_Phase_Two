@@ -3,10 +3,10 @@ import {
   FETCH_HOUSE_REQUEST,
   FETCH_HOUSE_SUCCESS,
   FETCH_HOUSE_FAIL,
-} from "../actionTypes";
+} from "./../actionTypes";
 
 const houseDescriptionAction = (houseID) => async (dispatch) => {
-  const production_url = `http://127.0.0.1:5000/house/description/${houseID}`;
+  const production_url = `/house/description/${houseID}`;
   const dev_url = `/house/description/${houseID}`;
   try {
     dispatch({ type: FETCH_HOUSE_REQUEST });

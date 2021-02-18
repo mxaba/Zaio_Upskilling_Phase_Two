@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../StyleSheet/HouseDescription.css";
+import "./../StyleSheet/HouseDescription.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 const Contact = () => {
@@ -20,7 +20,7 @@ const Contact = () => {
     data.append("subject", subject);
     data.append("message", message);
 
-    const production_url = "http://127.0.0.1:5000/api/contact";
+    const production_url = "/api/contact";
     const dev_url = "/api/contact";
     axios
       .post(production_url, data)

@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import screenLoader from "../images/screenLoad.gif";
+import screenLoader from "./../images/screenLoad.gif";
 
-import "../StyleSheet/HouseListed.css";
+import "./../StyleSheet/HouseListed.css";
 import { Link } from "react-router-dom";
-import SearchBoxAction from "../store/Actions/SearchboxAction";
+import SearchBoxAction from "./../store/Actions/SearchboxAction";
 const HouseOnSale = () => {
   const { loading, error, searchBoxResults } = useSelector(
     (state) => state.searchBoxResult

@@ -8,7 +8,7 @@ router.post("/api/contact", async (request, response) => {
   const form = new Formidable.IncomingForm();
 
   const transporter = nodemailer.createTransport({
-    service: "SendinBlue", // no need to set host or port etc.
+    service: "SendinBlue", 
     auth: {
       user: process.env.SendinBlue_EMAIL,
       pass: process.env.SendinBlue_PASS,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../StyleSheet/HouseListing.css";
+import "./../StyleSheet/HouseListing.css";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ const HouseListing = () => {
 
   const listProperty = (e) => {
     e.preventDefault();
-    const dev_url = "http://127.0.0.1:5000/api/houseListing";
+    const dev_url = "/api/houseListing";
     const data = new FormData();
     data.append("name", name);
     data.append("surname", surname);

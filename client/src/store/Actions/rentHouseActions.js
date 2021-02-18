@@ -3,10 +3,10 @@ const {
   FETCH_HOUSE_REQUEST,
   FETCH_HOUSE_SUCCESS,
   FETCH_HOUSE_FAIL,
-} = require("../actionTypes");
+} = require("./../actionTypes");
 
 const rentHouseAction = () => async (dispatch) => {
-  const production_url = "http://127.0.0.1:5000/house/rent";
+  const production_url = "/house/rent";
   const dev_url = "/house/rent";
   try {
     dispatch({ type: FETCH_HOUSE_REQUEST });

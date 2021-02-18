@@ -2,10 +2,10 @@ import {
   FETCH_HOUSE_FAIL,
   FETCH_HOUSE_REQUEST,
   FETCH_HOUSE_SUCCESS,
-} from "../actionTypes";
+} from "./../actionTypes";
 import axios from "axios";
 const filterSearchAction = (location) => async (dispatch) => {
-  const production_url = `http://127.0.0.1:5000/house/${location}`;
+  const production_url = `/house/${location}`;
   const dev_url = `/house/${location}`;
   try {
     dispatch({ type: FETCH_HOUSE_REQUEST });

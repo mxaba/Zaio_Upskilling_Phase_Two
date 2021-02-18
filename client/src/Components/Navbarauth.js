@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../store/Actions/authActions";
+import { logoutUser } from "./../store/Actions/authActions";
 import logo from './common/images/logo.svg';
 
 class Navbarauth extends Component {

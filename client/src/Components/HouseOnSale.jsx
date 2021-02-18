@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { houseOnSaleFetch } from "../store/Actions/housesFetch";
-import screenLoader from "../images/screenLoad.gif";
-import "../StyleSheet/HouseListed.css";
+import { houseOnSaleFetch } from "./../store/Actions/housesFetch";
+import screenLoader from "./../images/screenLoad.gif";
+import "./../StyleSheet/HouseListed.css";
 import { Link } from "react-router-dom";
 const HouseOnSale = () => {
   const { loading, error, houseOnSale } = useSelector(

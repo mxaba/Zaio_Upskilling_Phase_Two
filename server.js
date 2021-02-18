@@ -8,9 +8,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
-
 // DB Config
-const db = require("./config/keys").mongoURI;
+const db = process.env.mongoURI;
 app.use(bodyParser.json());
 app.use(passport.initialize());
 require("./config/passport")(passport);
@@ -56,15 +55,14 @@ app.use(UsersRoute);
 
 
 //Setting up for production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-
-  app.get("*", (request, response) => {
-    response.sendFile(
-      path.resolve(__dirname, "./client", "build", "index.html")
+// if (process.env.NODE_ENV === "production") {
+app.use(express.static("client/build"));
+app.get("*", (request, response) => {
+  response.sendFile(
+    path.resolve(__dirname, "./client", "build", "index.html")
     );
   });
-}
+// }
 
 //Server
 const PORT = process.env.PORT || 5000;

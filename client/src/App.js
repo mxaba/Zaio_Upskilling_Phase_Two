@@ -53,37 +53,46 @@ class App extends Component {
         <Switch>
           <Route path="/house/search/:query">
             <SearchResults />
+            <Footer />
           </Route>
           <Route exact path="/register" component={Register}>
             <Register />
+            <Footer />
           </Route>
           <Route path="/login">
             <Login />
+            <Footer />
           </Route>
           <Route path="/contact-us">
             <Contact />
+            <Footer />
           </Route>
           <Route path="/search/results-location/:location">
             <FilterSearchResults />
+            <Footer />
           </Route>
           <Route path="/house/:location/:id">
             <HouseDescription />
           </Route>
           <Route path="/properties/sale" render={(routeProps) => <HouseOnSale {...routeProps}/>}>
             <HouseOnSale />
+            <Footer />
           </Route>
           <Route path="/properties/rent">
             <HouseOnRent />
+            <Footer />
           </Route>
           <PrivateRoute exact path="/properties/sell" component={HouseListing}>
             <HouseListing />
+            <Footer />
           </PrivateRoute>
           <Route to="/">
             <SearchBar />
             <MainContent />
+            <Footer />
           </Route>
         </Switch>
-        <Footer />
+        
       </Router>
     );
   }

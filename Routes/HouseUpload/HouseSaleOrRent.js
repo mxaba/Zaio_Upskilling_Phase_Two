@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Formidable = require("formidable");
 const cloudinary = require("cloudinary").v2;
-const House = require("../../Models/Houses");
+const House = require("./../../models/Houses");
 
 //ROUTE FOR USER TO COME SELL OR RENT THEIR HOUSES
 

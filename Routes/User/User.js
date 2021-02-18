@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
+const keys = require("./../../config/keys");
 const passport = require("passport");
 //Validator
 const Validator = require("validator");
@@ -42,7 +42,7 @@ function validateRegister(data) {
   };
 
 // Load User model
-const User = require("../../models/User");
+const User = require("./../../models/User");
 
 router.post("/register", (req, res) => {
   // Form validation
@@ -112,7 +112,7 @@ router.post("/login", (req, res) => {
   User.findOne({ email }).then(user => {
     // Check if user exists
     if (!user) {
-      return res.status(404).json({ emailnotfound: "Email not registered with Us..." });
+      return res.status(404).json({ emailnotfound: "Email not registered with Us... Try to Register." });
     }
     // Check password
     bcrypt.compare(password, user.password).then(isMatch => {

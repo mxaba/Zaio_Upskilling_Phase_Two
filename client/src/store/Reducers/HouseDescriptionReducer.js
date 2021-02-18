@@ -2,7 +2,7 @@ const {
   FETCH_HOUSE_REQUEST,
   FETCH_HOUSE_SUCCESS,
   FETCH_HOUSE_FAIL,
-} = require("../actionTypes");
+} = require("./../actionTypes");
 
 const houseDescriptionReducer = (state = { houseDescription: [] }, action) => {
   switch (action.type) {

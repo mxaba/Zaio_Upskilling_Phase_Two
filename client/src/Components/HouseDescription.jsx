@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import houseDescriptionAction from "../store/Actions/HouseDescription";
-import screenLoader from "../images/screenLoad.gif";
+import houseDescriptionAction from "./../store/Actions/HouseDescription";
+import screenLoader from "./../images/screenLoad.gif";
 import HotelIcon from "@material-ui/icons/Hotel";
 import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import BathtubIcon from "@material-ui/icons/Bathtub";
-import "../StyleSheet/HouseDescription.css";
+import "./../StyleSheet/HouseDescription.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 const HouseDescription = () => {
@@ -36,7 +36,7 @@ const HouseDescription = () => {
     data.append("subject", subject);
     data.append("message", message);
 
-    const production_url = "http://127.0.0.1:5000/contact";
+    const production_url = "/contact";
     const dev_url = "/api/contact";
     axios
       .post(production_url, data)

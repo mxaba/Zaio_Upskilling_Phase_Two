@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../store/Actions/authActions";
+import { loginUser } from "./../../store/Actions/authActions";
 import classnames from "classnames";
 
 class Login extends Component {
@@ -19,7 +19,7 @@ class Login extends Component {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth !== undefined){
       if (this.props.auth.isAuthenticated) {
-        window.location.href = "/properties/sale";
+        window.location.href = "/";
     }
   }
 }
@@ -27,7 +27,7 @@ class Login extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.auth !== undefined){
       if (this.props.auth.isAuthenticated) {
-        window.location.href = "/properties/sale";
+        window.location.href = "/";
     }
   }
 

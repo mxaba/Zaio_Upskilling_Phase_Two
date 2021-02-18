@@ -2,7 +2,7 @@ import {
   FETCH_HOUSE_FAIL,
   FETCH_HOUSE_REQUEST,
   FETCH_HOUSE_SUCCESS,
-} from "../actionTypes";
+} from "./../actionTypes";
 
 const searchBoxReducer = (state = { searchBoxResults: [] }, action) => {
   switch (action.type) {

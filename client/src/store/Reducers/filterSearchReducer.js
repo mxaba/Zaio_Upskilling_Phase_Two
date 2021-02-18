@@ -2,7 +2,7 @@ const {
   FETCH_HOUSE_FAIL,
   FETCH_HOUSE_REQUEST,
   FETCH_HOUSE_SUCCESS,
-} = require("../actionTypes");
+} = require("./../actionTypes");
 
 const filterSearchReducer = (state = { filterSearch: [] }, action) => {
   switch (action.type) {

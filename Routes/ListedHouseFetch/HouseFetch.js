@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const House = require("../../Models/Houses");
+const House = require("./../../models/Houses");
 
 router.get("/house/sale", async (request, response) => {
   await House.find({ "house_properties.sale_or_rent": "SALE" })

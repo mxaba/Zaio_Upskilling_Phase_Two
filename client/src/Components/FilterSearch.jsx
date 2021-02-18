@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import screenLoader from "../images/screenLoad.gif";
-import "../StyleSheet/HouseListed.css";
+import screenLoader from "./../images/screenLoad.gif";
+import "./../StyleSheet/HouseListed.css";
 import { Link } from "react-router-dom";
-import filterSearchAction from "../store/Actions/filterSearchAction";
+import filterSearchAction from "./../store/Actions/filterSearchAction";
 const FilterSearchResults = () => {
   const { loading, error, filterSearch } = useSelector(
     (state) => state.filterSearchResult

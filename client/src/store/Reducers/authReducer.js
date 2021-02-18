@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, USER_LOADING } from "../actionTypes";
+import { SET_CURRENT_USER, USER_LOADING } from "./../actionTypes";
 
 const isEmpty = require("is-empty");
 

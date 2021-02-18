@@ -6,8 +6,6 @@
   - For Sale link
   - To Rent link
   - List Property link
-  - Contact us
-  - NB: switch this dev_url to production_url
 
 TODO
 
@@ -28,8 +26,7 @@ TODO
     - House filter
     - Apartment / Flat filter
     - Townhouse filter
-    - Farm filter
-    # - price filters (Min and Max price)
+- price filters (Min and Max price)
 
 TODO
 
@@ -38,4 +35,13 @@ TODO
 - Property Details Route on click:
   - Display all info of the property
   - Have contact form for a potential buyer to email an agent with regards to a property
+- A user to be able to delete a house listed
+- To not be able to list a house without registering
+- To add the other pages
+
+
+LINKS
+- link to Web-App: https://property24.herokuapp.com/
+- Github: https://github.com/mxaba/Zaio_Upskilling_Phase_Two
+- author: mxaba.github.io
 

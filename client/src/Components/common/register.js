@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../../store/Actions/authActions";
+import { registerUser } from "./../../store/Actions/authActions";
 import classnames from "classnames";
 
 class Register extends Component {
@@ -21,7 +21,7 @@ class Register extends Component {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth !== undefined){
       if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/properties/sale");
+      this.props.history.push("/");
     }
   }
 }

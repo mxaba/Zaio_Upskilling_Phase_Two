@@ -6,8 +6,21 @@ import logo from './images/logo.svg';
 
 
 class Navbar extends Component {
-  render() {
 
+    onLogoutClick = e => {
+        e.preventDefault();
+        this.props.logoutUser();
+      };
+
+  render() {
+    const { user } = this.props.auth;
+    if (user !== undefined){
+        if (user.isAuthenticated) {
+          var button1 = <a className="nav-link" onClick={this.onLogoutClick} id="navbarDropdown" role="button" data-toggle="dropdown">Hey {user.name} | Logout</a>
+      } else {
+          var button = <a className="nav-link" href="/login" id="navbarDropdown" role="button" data-toggle="dropdown" style={{color:'red'}}>Login / Sign-up</a>
+      }
+    }
     return (
         <header className="header">
                 <nav className="navbar navbar-light bg-white navbar-static-top navbar-expand-lg header-sticky">
@@ -19,11 +32,12 @@ class Navbar extends Component {
                         <div className="col-sm-12 navbar-collapse collapse justify-content-center">
                             <ul className="nav navbar-nav">
                             <li className="nav-item">
+                                {button}
+                                {button1}
+                            </li>
+                            {/* <li className="nav-item">
                                     <a className="nav-link" href="/login" id="navbarDropdown" role="button" data-toggle="dropdown">Login</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/register" id="navbarDropdown" role="button" data-toggle="dropdown" style={{color:'red'}}>Sign-Up</a>
-                                </li>
+                                </li> */}
                                 <li className="nav-item">
                                     <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Developments</a>
                                 </li>
