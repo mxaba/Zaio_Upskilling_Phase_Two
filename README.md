@@ -38,6 +38,8 @@ TODO
 - A user to be able to delete a house listed
 - To not be able to list a house without registering
 - To add the other pages
+- After Signing in I could do it in time to hide the login/Sugn-up Button
+NB: Session last 30 minutes
 
 
 LINKS
